@@ -9,7 +9,7 @@ class PersonSearchResult extends React.Component {
   render() {
     const rows = [];
     this.props.persons.forEach(person => {
-      rows.push(<PersonRow person={person} />)
+      rows.push(<PersonRow key={person.name + '___' + person.vorname} person={person} />)
     });
     return (
       <table>
