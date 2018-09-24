@@ -38,6 +38,10 @@ class PersonHeader extends React.Component {
 
 class PersonRow extends React.Component {
   render() {
+    if (this.props.person.name === 'XXX1') {
+      // Simulate a JS error
+      throw new Error('I crashed!');
+    }
     return (
       <tr>
         <td>{this.props.person.name}</td>

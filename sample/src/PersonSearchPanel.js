@@ -1,8 +1,9 @@
 import React from 'react';
 import PersonSearchForm from './PersonSearchForm';
 import PersonSearchResult from './PersonSearchResult';
+import ErrorBoundary from './ErrorBoundary';
 import axios from 'axios';
-import { fromEvent } from 'rxjs';
+import { fromEvent, of } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 
 class PersonSearchPanel extends React.Component {
@@ -19,14 +20,28 @@ class PersonSearchPanel extends React.Component {
 
     componentDidMount() {
       fromEvent(this.eventTarget, "OnChange")
-        .pipe(debounceTime(200), switchMap(s => axios.get('http://localhost:8080/person?name=' + s.detail)))
+        .pipe(debounceTime(200))
+        .pipe(
+          switchMap(s => axios.get('http://localhost:8080/person?name=' + s.detail)
+            .catch(error => {
+              console.log(error);
+              this.setState({
+                error: 'Fehler bei der Serveranfrage'
+              })
+              return of(undefined);
+            })
+          )
+        )
         .subscribe(
-            res => {
-                console.log(res.data);
-                this.setState({
-                    persons : res.data
-                });
+          res => {
+            if (res.data !== undefined) {
+              console.log(res.data);
+              this.setState({
+                  persons : res.data,
+                  error: undefined
+              });
             }
+          }
         );
     }
 
@@ -44,10 +59,17 @@ class PersonSearchPanel extends React.Component {
 
   render() {
     return (
-      <div>
-        <PersonSearchForm onChange={this.onChange} />
-        <PersonSearchResult persons={this.state.persons} />
-      </div>
+      <ErrorBoundary>
+        <div>
+          <PersonSearchForm onChange={this.onChange} />
+          {this.state.error === undefined &&
+            <PersonSearchResult persons={this.state.persons} />
+          }
+          {this.state.error !== undefined &&
+            <div>{this.state.error}</div>
+          }
+        </div>
+      </ErrorBoundary>
     );
   }
 
