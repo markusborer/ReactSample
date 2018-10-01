@@ -1,4 +1,5 @@
 import React from 'react';
+import {Row, Input} from 'react-materialize';
 
 class PersonSearchForm extends React.Component {
 
@@ -14,7 +15,9 @@ class PersonSearchForm extends React.Component {
 
   render() {
     return (
-      <input onChange={this.onChange} />
+      <Row>
+        <Input label="Name" s={4} onChange={this.onChange} />
+      </Row>
     );
   }
 

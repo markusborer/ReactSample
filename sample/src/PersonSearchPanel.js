@@ -61,6 +61,7 @@ class PersonSearchPanel extends React.Component {
     return (
       <ErrorBoundary>
         <div>
+          <p>Personensuche</p>
           <PersonSearchForm onChange={this.onChange} />
           {this.state.error === undefined &&
             <PersonSearchResult persons={this.state.persons} />

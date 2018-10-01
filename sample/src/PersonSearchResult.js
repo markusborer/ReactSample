@@ -1,4 +1,5 @@
 import React from 'react';
+import {Table, Row, Col} from 'react-materialize';
 
 class PersonSearchResult extends React.Component {
 
@@ -12,14 +13,14 @@ class PersonSearchResult extends React.Component {
       rows.push(<PersonRow key={person.name + '___' + person.vorname} person={person} />)
     });
     return (
-      <table>
+      <Table hoverable="true" className="table">
         <thead>
           <PersonHeader />
         </thead>
         <tbody>
           {rows}
         </tbody>
-      </table>
+      </Table>
     );
   }
 
@@ -28,10 +29,10 @@ class PersonSearchResult extends React.Component {
 class PersonHeader extends React.Component {
   render() {
     return (
-      <tr>
-        <th>Name</th>
-        <th>Vorname</th>
-      </tr>
+      <Row node="tr" className="tableRow">
+        <Col node="th" s={4} m={4} className="tableCell">Name</Col>
+        <Col node="th" s={8} m={8} className="tableCell">Vorname</Col>
+      </Row>
     )
   }
 }
@@ -43,10 +44,10 @@ class PersonRow extends React.Component {
       throw new Error('I crashed!');
     }
     return (
-      <tr>
-        <td>{this.props.person.name}</td>
-        <td>{this.props.person.vorname}</td>
-      </tr>
+      <Row node="tr" className="tableRow">
+        <Col node="td" s={4} m={4} className="tableCell">{this.props.person.name}</Col>
+        <Col node="td" s={8} m={8} className="tableCell">{this.props.person.vorname}</Col>
+      </Row>
     )
   }
 }
