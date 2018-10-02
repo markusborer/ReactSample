@@ -29,9 +29,9 @@ class PersonSearchResult extends React.Component {
 class PersonHeader extends React.Component {
   render() {
     return (
-      <Row node="tr" className="tableRow">
-        <Col node="th" s={4} m={4} className="tableCell">Name</Col>
-        <Col node="th" s={8} m={8} className="tableCell">Vorname</Col>
+      <Row node="tr">
+        <Col node="th" s={4} m={4}>Name</Col>
+        <Col node="th" s={8} m={8}>Vorname</Col>
       </Row>
     )
   }
@@ -44,9 +44,9 @@ class PersonRow extends React.Component {
       throw new Error('I crashed!');
     }
     return (
-      <Row node="tr" className="tableRow">
-        <Col node="td" s={4} m={4} className="tableCell">{this.props.person.name}</Col>
-        <Col node="td" s={8} m={8} className="tableCell">{this.props.person.vorname}</Col>
+      <Row node="tr">
+        <Col node="td" s={4} m={4}>{this.props.person.name}</Col>
+        <Col node="td" s={8} m={8}>{this.props.person.vorname}</Col>
       </Row>
     )
   }

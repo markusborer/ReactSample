@@ -4,15 +4,22 @@ body {
   font-family: sans-serif;
 }
 
-.leftAlign {
-  text-align: left;
+td, th {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
-.rightAlign {
-  text-align: right;
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.table .tableRow .tableCell {
-  padding-top: 5px;
-  padding-bottom: 5px;
+main {
+  flex: 1 0 auto;
+  padding: 0px 20px 0px 20px;
+}
+
+footer {
+  padding: 20px 20px 0px 20px;
 }

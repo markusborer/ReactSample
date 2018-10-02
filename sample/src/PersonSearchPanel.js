@@ -5,6 +5,7 @@ import ErrorBoundary from './ErrorBoundary';
 import axios from 'axios';
 import { fromEvent, of } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
+import {Modal,} from 'react-materialize';
 
 class PersonSearchPanel extends React.Component {
 
@@ -61,13 +62,15 @@ class PersonSearchPanel extends React.Component {
     return (
       <ErrorBoundary>
         <div>
-          <p>Personensuche</p>
+          <h3 className="left-align">Personensuche</h3>
           <PersonSearchForm onChange={this.onChange} />
           {this.state.error === undefined &&
             <PersonSearchResult persons={this.state.persons} />
           }
           {this.state.error !== undefined &&
-            <div>{this.state.error}</div>
+            <Modal header='Error' open='true'>
+              {this.state.error}
+            </Modal>
           }
         </div>
       </ErrorBoundary>

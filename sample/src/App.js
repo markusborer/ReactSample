@@ -20,25 +20,29 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <header className="App-header">
           <Row>
-          <Col s={4} m={4} className="leftAlign">
+            <Col s={4} m={4} className="left-align">
               <Login isLoggedIn={this.state.isLoggedIn} onChange={this.changeLogin}></Login>
             </Col>
             <Col s={4} m={4}>
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">{this.state.isLoggedIn ? 'Welcome to React' : 'Please log in'}</h1>
             </Col>
-            <Col s={4} m={4} className="rightAlign">
-              The time is <Timer></Timer>
+            <Col s={4} m={4} className="right-align">
             </Col>
           </Row>
         </header>
-        {this.state.isLoggedIn ? <PersonSearchPanel /> : null}
-        <Footer className="white-text">
-          The time is <Timer></Timer>
-        </Footer>
+        <main className="grey lighten-3">
+          {this.state.isLoggedIn ? <PersonSearchPanel /> : null}
+        </main>
+        <footer className="black white-text">
+          <Row>
+            <Col s={6} m={6} className="left-align">&copy; Copyright Markus Borer</Col>
+            <Col s={6} m={6} className="right-align"><Timer /></Col>
+          </Row>
+        </footer>
       </div>
     );
   }

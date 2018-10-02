@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component {
         // Error path
         return (
           <div>
-            <h2>Something went wrong.</h2>
+            <p className="red-text"><b>Es ist ein Fehler aufgetreten. Sie müssen die Seite neu laden (F5).</b></p>
             <details style={{ whiteSpace: 'pre-wrap' }}>
               {this.state.error && this.state.error.toString()}
               <br />
