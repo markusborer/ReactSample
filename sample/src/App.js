@@ -28,7 +28,7 @@ class App extends React.Component {
             </Col>
             <Col s={4} m={4}>
               <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">{this.state.isLoggedIn ? 'Welcome to React' : 'Please log in'}</h1>
+              <h1 className="App-title">{this.state.isLoggedIn ? 'Welcome ' + this.props.name + ' to React' : 'Please log in'}</h1>
             </Col>
             <Col s={4} m={4} className="right-align">
             </Col>
